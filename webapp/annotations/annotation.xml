@@ -88,7 +88,35 @@
                     <Collection>
                         <PropertyPath>LocalCurrency</PropertyPath>
                         <PropertyPath>ForeignCurrency</PropertyPath>
+                        <PropertyPath>Airline</PropertyPath>
+                        <PropertyPath>FlightYear</PropertyPath>
                     </Collection>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="VisualFilterByAirline">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="REPLACE_WITH_CHART_TITLE"/>
+                        <PropertyValue Property="Description" String="REPLACE_WITH_CHART_DESCRIPTION"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>Airline</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>PriceLocalCurrency</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="PresentationFilterByAirline">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#VisualFilterByAirline</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
                 </Annotation>
             </Annotations>
 
@@ -101,6 +129,23 @@
             <Annotations Target="SAP.ZC_BOOKINGALPType/LocalCurrency">
                 <Annotation Term="Common.FilterDefaultValue">
                     <String>USD</String>
+                </Annotation>
+            </Annotations>
+
+            <Annotations Target="SAP.ZC_BOOKINGALPType/Airline">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="ZC_BOOKINGALP"/>
+                        <PropertyValue Property="PresentationVariantQualifier" String="PresentationFilterByAirline"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Airline"/>
+                                    <PropertyValue Property="ValueListProperty" String="Airline"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
                 </Annotation>
             </Annotations>
         </Schema>
