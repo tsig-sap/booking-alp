@@ -1,12 +1,12 @@
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
     <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
-        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common" />
     </edmx:Reference>
     <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
-        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI" />
     </edmx:Reference>
     <edmx:Reference Uri="/sap/opu/odata/sap/ZC_BOOKINGALP_CDS/$metadata">
-        <edmx:Include Namespace="ZC_BOOKINGALP_CDS" Alias="SAP"/>
+        <edmx:Include Namespace="ZC_BOOKINGALP_CDS" Alias="SAP" />
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
@@ -14,27 +14,27 @@
                 <Annotation Term="UI.LineItem">
                     <Collection>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="Airline"/>
+                            <PropertyValue Property="Value" Path="Airline" />
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="FlightNumber"/>
+                            <PropertyValue Property="Value" Path="FlightNumber" />
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="FlightDate"/>
+                            <PropertyValue Property="Value" Path="FlightDate" />
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="PriceLocalCurrency"/>
+                            <PropertyValue Property="Value" Path="PriceLocalCurrency" />
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="PriceLocalCurrency_F"/>
+                            <PropertyValue Property="Value" Path="PriceLocalCurrency_F" />
                         </Record>
                     </Collection>
                 </Annotation>
                 <Annotation Term="UI.Chart" Qualifier="BookingChart">
                     <Record Type="UI.ChartDefinitionType">
-                        <PropertyValue Property="Title" String="Booking Chart"/>
-                        <PropertyValue Property="Description" String="REPLACE_WITH_CHART_DESCRIPTION"/>
-                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+                        <PropertyValue Property="Title" String="Booking Chart" />
+                        <PropertyValue Property="Description" String="REPLACE_WITH_CHART_DESCRIPTION" />
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column" />
                         <PropertyValue Property="Dimensions">
                             <Collection>
                                 <PropertyPath>FlightYear</PropertyPath>
@@ -43,8 +43,8 @@
                         <PropertyValue Property="DimensionAttributes">
                             <Collection>
                                 <Record Type="UI.ChartDimensionAttributeType">
-                                    <PropertyValue Property="Dimension" PropertyPath="FlightYear"/>
-                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Series"/>
+                                    <PropertyValue Property="Dimension" PropertyPath="FlightYear" />
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Series" />
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -56,8 +56,8 @@
                         <PropertyValue Property="MeasureAttributes">
                             <Collection>
                                 <Record Type="UI.ChartMeasureAttributeType">
-                                    <PropertyValue Property="Measure" PropertyPath="PriceLocalCurrency"/>
-                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                    <PropertyValue Property="Measure" PropertyPath="PriceLocalCurrency" />
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1" />
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -65,17 +65,17 @@
                 </Annotation>
                 <Annotation Term="UI.PresentationVariant">
                     <Record Type="UI.PresentationVariantType">
-                        <PropertyValue Property="Text" String="Default"/>
+                        <PropertyValue Property="Text" String="Default" />
                         <PropertyValue Property="SortOrder">
                             <Collection>
                                 <Record Type="Common.SortOrderType">
-                                    <PropertyValue Property="Property" PropertyPath="Airline"/>
-                                    <PropertyValue Property="Descending" Bool="false"/>
+                                    <PropertyValue Property="Property" PropertyPath="Airline" />
+                                    <PropertyValue Property="Descending" Bool="false" />
                                 </Record>
                             </Collection>
                         </PropertyValue>
-                        <PropertyValue Property="IncludeGrandTotal" Bool="false"/>
-                        <PropertyValue Property="InitialExpansionLevel" Int="0"/>
+                        <PropertyValue Property="IncludeGrandTotal" Bool="false" />
+                        <PropertyValue Property="InitialExpansionLevel" Int="0" />
                         <PropertyValue Property="Visualizations">
                             <Collection>
                                 <AnnotationPath>@UI.LineItem</AnnotationPath>
@@ -89,6 +89,18 @@
                         <PropertyPath>LocalCurrency</PropertyPath>
                         <PropertyPath>ForeignCurrency</PropertyPath>
                     </Collection>
+                </Annotation>
+            </Annotations>
+
+            <Annotations Target="SAP.ZC_BOOKINGALPType/ForeignCurrency">
+                <Annotation Term="Common.FilterDefaultValue">
+                    <String>USD</String>
+                </Annotation>
+            </Annotations>
+
+            <Annotations Target="SAP.ZC_BOOKINGALPType/LocalCurrency">
+                <Annotation Term="Common.FilterDefaultValue">
+                    <String>USD</String>
                 </Annotation>
             </Annotations>
         </Schema>
