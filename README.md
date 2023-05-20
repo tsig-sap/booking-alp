@@ -1,25 +1,24 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Fri Mar 10 2023 23:15:55 GMT+0700 (Western Indonesia Time)|
+|**Generation Date and Time**<br>Sat May 20 2023 15:03:19 GMT+0700 (Western Indonesia Time)|
 |**App Generator**<br>@sap/generator-fiori-elements|
 |**App Generator Version**<br>1.9.0|
 |**Generation Platform**<br>Visual Studio Code|
 |**Template Used**<br>Analytical List Page V2|
 |**Service Type**<br>SAP System (ABAP On Premise)|
 |**Service URL**<br>https://pcoe2021.sigma.co.id:8443/sap/opu/odata/sap/ZC_BOOKINGALP_CDS
-|**Module Name**<br>booking-alp|
-|**Application Title**<br>App Title|
+|**Module Name**<br>bookingalp|
+|**Application Title**<br>Booking Analytics|
 |**Namespace**<br>tsig.sap|
 |**UI5 Theme**<br>sap_fiori_3|
 |**UI5 Version**<br>1.96.6|
 |**Enable Code Assist Libraries**<br>False|
 |**Enable TypeScript**<br>False|
 |**Add Eslint configuration**<br>False|
-|**Main Entity**<br>ZC_BookingALP|
-|**Navigation Entity**<br>None|
+|**Main Entity**<br>ZC_BOOKINGALP|
 
-## booking-alp
+## bookingalp
 
 A Fiori application.
 

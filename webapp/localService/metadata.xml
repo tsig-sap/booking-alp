@@ -1,75 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
-    <edmx:Reference Uri="https://pcoe2021.sigma.co.id:8443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://pcoe2021.sigma.co.id:8443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://pcoe2021.sigma.co.id:8443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://pcoe2021.sigma.co.id:8443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
-        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="CodeList"/>
-    </edmx:Reference>
     <edmx:Reference Uri="https://pcoe2021.sigma.co.id:8443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://pcoe2021.sigma.co.id:8443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://pcoe2021.sigma.co.id:8443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://pcoe2021.sigma.co.id:8443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://pcoe2021.sigma.co.id:8443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://pcoe2021.sigma.co.id:8443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
     </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
         <Schema Namespace="ZC_BOOKINGALP_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
             <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
-            <EntityType Name="ZC_BookingALPType" sap:label="Consumption View SBOOK-ALP" sap:content-version="1">
+            <EntityType Name="ZC_BOOKINGALPType" sap:label="Consumption View SBOOK - ALP" sap:semantics="aggregate" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="Airline"/>
-                    <PropertyRef Name="FlightNumber"/>
-                    <PropertyRef Name="FlightDate"/>
-                    <PropertyRef Name="BookingId"/>
+                    <PropertyRef Name="ID"/>
                 </Key>
-                <Property Name="Airline" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Airline" sap:quickinfo="Airline Code"/>
-                <Property Name="FlightNumber" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Connection Number" sap:quickinfo="Flight Connection Number"/>
-                <Property Name="FlightDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Flight Date" sap:quickinfo="Flight date"/>
-                <Property Name="BookingId" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Booking number"/>
-                <Property Name="Customer" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Customer Number"/>
-                <Property Name="CustomerType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="B/P customer" sap:quickinfo="Customer type"/>
-                <Property Name="Smoker" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Smoker"/>
-                <Property Name="LuggageWeight" Type="Edm.Decimal" Precision="8" Scale="4" sap:label="Luggage Weight" sap:quickinfo="Weight of Luggage"/>
-                <Property Name="WeightUnit" Type="Edm.String" MaxLength="3" sap:label="Unit of Measurement" sap:quickinfo="Weight Unit" sap:semantics="unit-of-measure"/>
-                <Property Name="Invoice" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Invoice flag"/>
-                <Property Name="Class" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Class" sap:quickinfo="Flight Class"/>
-                <Property Name="PriceForeignCurrency" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="ForeignCurrency" sap:label="Amount" sap:quickinfo="Booking price in foreign currency (dependent on location)"/>
-                <Property Name="ForeignCurrency" Type="Edm.String" MaxLength="5" sap:label="Paymnt currency" sap:quickinfo="Payment currency" sap:semantics="currency-code"/>
-                <Property Name="PriceLocalCurrency" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="LocalCurrency" sap:label="Amount (loc.currncy)" sap:quickinfo="Price of booking in local currency of airline"/>
-                <Property Name="LocalCurrency" Type="Edm.String" MaxLength="5" sap:label="Airline Currency" sap:quickinfo="Local currency of airline" sap:semantics="currency-code"/>
-                <Property Name="OrderDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting date" sap:quickinfo="Booking Date"/>
-                <Property Name="Counter" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Sales office" sap:quickinfo="Number of sales office"/>
-                <Property Name="AgencyNumber" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Agency No." sap:quickinfo="Travel Agency Number"/>
-                <Property Name="Cancelled" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Cancelation flag"/>
-                <Property Name="Reserved" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Reserved" sap:quickinfo="Reservation flag"/>
-                <Property Name="PassengerName" Type="Edm.String" MaxLength="25" sap:label="Passenger Name" sap:quickinfo="Name of the Passenger"/>
-                <Property Name="PassengerFormOfAddress" Type="Edm.String" MaxLength="15" sap:label="Form of address"/>
-                <Property Name="PassengerBirthDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="DOB of Passenger" sap:quickinfo="Date of Birth of a Passenger"/>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:filterable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TotaledProperties" Type="Edm.String" sap:aggregation-role="totaled-properties-list" sap:is-annotation="true" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="LocalCurrency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Airline Currency" sap:quickinfo="Local currency of airline" sap:creatable="false" sap:updatable="false" sap:value-list="standard" sap:semantics="currency-code"/>
+                <Property Name="FlightMonth" Type="Edm.Int32" sap:aggregation-role="dimension" sap:label="Calendar Month" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FlightYear" Type="Edm.Int32" sap:aggregation-role="dimension" sap:label="Calendar Year" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ForeignCurrency" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Paymnt currency" sap:quickinfo="Payment currency" sap:creatable="false" sap:updatable="false" sap:value-list="standard" sap:semantics="currency-code"/>
+                <Property Name="FlightNumber" Type="Edm.Int32" sap:aggregation-role="dimension" sap:label="Connection Number" sap:quickinfo="Flight Connection Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FlightDate" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:text="FlightDate_T" sap:label="Flight Date" sap:quickinfo="Flight date" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
+                <Property Name="FlightDate_T" Type="Edm.String" MaxLength="10" sap:label="Flight Date (Description)" sap:quickinfo="Flight date" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Airline" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Airline" sap:quickinfo="Airline Code" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="BookingId" Type="Edm.Int32" sap:aggregation-role="dimension" sap:label="Booking number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PriceForeignCurrency" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:text="PriceForeignCurrency_F" sap:unit="ForeignCurrency" sap:updatable="false" sap:label="Amount" sap:quickinfo="Booking price in foreign currency (dependent on location)" sap:creatable="false"/>
+                <Property Name="PriceForeignCurrency_F" Type="Edm.String" MaxLength="60" sap:label="Amount (Formatted)" sap:quickinfo="Booking price in foreign currency (dependent on location)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="PriceLocalCurrency" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:text="PriceLocalCurrency_F" sap:unit="LocalCurrency" sap:updatable="false" sap:label="Amount (loc.currncy)" sap:quickinfo="Price of booking in local currency of airline" sap:creatable="false"/>
+                <Property Name="PriceLocalCurrency_F" Type="Edm.String" MaxLength="60" sap:label="Amount (loc.currncy) (Formatted)" sap:quickinfo="Price of booking in local currency of airline" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
             </EntityType>
-            <EntityContainer Name="ZC_BOOKINGALP_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
-                <EntitySet Name="ZC_BookingALP" EntityType="ZC_BOOKINGALP_CDS.ZC_BookingALPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            <EntityType Name="LocalCurrency" sap:label="Airline Currency (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LocalCurrency_ID"/>
+                </Key>
+                <Property Name="LocalCurrency_ID" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="LocalCurrencyText" sap:label="Airline Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="LocalCurrencyText" Type="Edm.String" sap:label="Airline Currency (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="LocalCurrencyResult" sap:label="Airline Currency (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LocalCurrency"/>
+                </Key>
+                <Property Name="LocalCurrency" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Airline Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="FlightMonth" Type="Edm.String" MaxLength="2" sap:label="Calendar Month" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="FlightYear" Type="Edm.String" MaxLength="4" sap:label="Calendar Year" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ForeignCurrency" Type="Edm.String" MaxLength="5" sap:label="Paymnt currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="FlightNumber" Type="Edm.String" MaxLength="4" sap:label="Connection Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="FlightDate" Type="Edm.String" MaxLength="10" sap:text="FlightDate_T" sap:label="Flight Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="FlightDate_T" Type="Edm.String" sap:label="Flight Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Airline" Type="Edm.String" MaxLength="3" sap:label="Airline" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BookingId" Type="Edm.String" MaxLength="8" sap:label="Booking number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="ForeignCurrency" sap:label="Paymnt currency (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ForeignCurrency_ID"/>
+                </Key>
+                <Property Name="ForeignCurrency_ID" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="ForeignCurrencyText" sap:label="Paymnt currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ForeignCurrencyText" Type="Edm.String" sap:label="Paymnt currency (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="ForeignCurrencyResult" sap:label="Paymnt currency (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ForeignCurrency"/>
+                </Key>
+                <Property Name="ForeignCurrency" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Paymnt currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="LocalCurrency" Type="Edm.String" MaxLength="5" sap:label="Airline Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="FlightMonth" Type="Edm.String" MaxLength="2" sap:label="Calendar Month" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="FlightYear" Type="Edm.String" MaxLength="4" sap:label="Calendar Year" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="FlightNumber" Type="Edm.String" MaxLength="4" sap:label="Connection Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="FlightDate" Type="Edm.String" MaxLength="10" sap:text="FlightDate_T" sap:label="Flight Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="FlightDate_T" Type="Edm.String" sap:label="Flight Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Airline" Type="Edm.String" MaxLength="3" sap:label="Airline" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="BookingId" Type="Edm.String" MaxLength="8" sap:label="Booking number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="ODataQueryAdditionalMetadata" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ODataQueryMetadata"/>
+                </Key>
+                <Property Name="ODataQueryMetadata" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValue_Current" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValueAtDefine" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZC_BOOKINGALP_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_BOOKINGALP" EntityType="ZC_BOOKINGALP_CDS.ZC_BOOKINGALPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="LocalCurrency" EntityType="ZC_BOOKINGALP_CDS.LocalCurrency" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="LocalCurrencyResults" EntityType="ZC_BOOKINGALP_CDS.LocalCurrencyResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ForeignCurrency" EntityType="ZC_BOOKINGALP_CDS.ForeignCurrency" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ForeignCurrencyResults" EntityType="ZC_BOOKINGALP_CDS.ForeignCurrencyResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="AdditionalMetadata" EntityType="ZC_BOOKINGALP_CDS.ODataQueryAdditionalMetadata" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
             </EntityContainer>
-            <Annotations Target="ZC_BOOKINGALP_CDS.ZC_BOOKINGALP_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            <Annotations Target="ZC_BOOKINGALP_CDS.ZC_BOOKINGALPType/LocalCurrency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Airline Currency ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="LocalCurrency"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="LocalCurrency"/>
+                                    <PropertyValue Property="ValueListProperty" String="LocalCurrency_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LocalCurrencyText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_BOOKINGALP_CDS.ZC_BOOKINGALPType/ForeignCurrency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Paymnt currency ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="ForeignCurrency"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ForeignCurrency"/>
+                                    <PropertyValue Property="ValueListProperty" String="ForeignCurrency_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ForeignCurrencyText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
             </Annotations>
             <atom:link rel="self" href="https://pcoe2021.sigma.co.id:8443/sap/opu/odata/sap/ZC_BOOKINGALP_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
             <atom:link rel="latest-version" href="https://pcoe2021.sigma.co.id:8443/sap/opu/odata/sap/ZC_BOOKINGALP_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
